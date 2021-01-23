@@ -26,7 +26,7 @@ export class StepsList extends Component {
             <div> 
                 <h2 className="mb-2 font-normal text-gray-700 text-lg">Steps</h2>
                 { newStepForm }
-                <ul className="list-decimal">
+                <ul className={`list-decimal ${ this.props.steps.length > 0 ? 'pl-4' : '' } `}  >
                     { stepList }
                 </ul>
             </div>

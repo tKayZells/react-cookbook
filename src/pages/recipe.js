@@ -17,6 +17,7 @@ export class Recipe extends Component {
 
     onSaveButtonClick(){
         this.props.newRecipeEvent( { name: this.state.name, desc : this.state.desc, ingridients : this.state.ingridients, steps : this.state.steps } );
+        this.setState( { name: '', desc : '', ingridients : [], steps : [] } );
     }
 
     onRecipeNameChange( e ){
@@ -45,14 +46,20 @@ export class Recipe extends Component {
         return (
             <div className="lg:col-span-2">
                 <div className="flex">
-                    <input onChange={ this.onRecipeNameChange } disabled={ inViewMode } className="border rounded-sm p-2 m-2 ml-0 w-56 text-sm" type="text" placeholder={ inViewMode ? "Select or Create a Recipe":"Recipe name" } />
+                    <input className="border rounded-sm p-2 m-2 ml-0 w-56 font-thin text-gray-500" type="text" 
+                        onChange={ this.onRecipeNameChange } 
+                        disabled={ inViewMode } 
+                        placeholder={ inViewMode ? "Select or Create a Recipe":"Recipe name" } />
                     <div className="w-1/12"></div>
-                    <button onClick={ this.onSaveButtonClick } disabled={ inViewMode } className="self-center"><i className="fas fa-save fa-2x"></i></button>
+                    <button onClick={ this.onSaveButtonClick } disabled={ inViewMode } className="self-center">
+                        <i className="fas fa-save fa-2x"></i>
+                    </button>
                 </div>
                 <div className="border lg:w-1/3 sm:w-1/2 sm:justify-between"></div>
                 <div className="py-4 my-2 flex flex-col md:max-w-md">
                     <label className="text-lg my-2 text-gray-700 font-normal">Description</label>
-                    <textarea onChange={ this.onRecipeDescriptionChange } disabled={ inViewMode } className="border p-2 font-thin text-gray-500 max-h-24 text-sm"></textarea>
+                    <textarea className="border p-2 font-thin text-gray-500 max-h-24 text-sm" onChange={ this.onRecipeDescriptionChange } disabled={ inViewMode }>
+                    </textarea>
                 </div>
                 <Ingredientslist ingridients={ this.state.ingridients } inViewMode={ inViewMode } newIngridientEvent={ this.newIngridientEventHandler } />
                 <StepsList steps={ this.state.steps } inViewMode={ inViewMode } newStepEvent={ this.newStepEventHandler } />

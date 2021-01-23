@@ -18,6 +18,7 @@ export class StepForm extends Component {
 
     newStepButtonHandler(){
         this.props.newStepEvent( this.state.step );
+        this.setState( { step : '' } );
         this.stepInput.current.value = '';
     }
 

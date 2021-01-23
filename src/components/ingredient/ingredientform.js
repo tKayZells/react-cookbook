@@ -14,6 +14,7 @@ export class IngredientForm extends Component {
 
     newIngridientButtonHandle(){
         this.props.newIngridientEvent( { name : this.state.name, qty : this.state.qty } );
+        this.setState({ qty : '', name : '' });
         this.nameInput.current.value = '';
         this.quantityInput.current.value = '';
     }
