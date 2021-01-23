@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import { StepForm } from "./stepform";
 import { StepItem } from "./stepitem";
 
 export class StepsList extends Component {
@@ -6,22 +7,28 @@ export class StepsList extends Component {
     constructor(props) {
         super(props);
         this.state = { steps: [ "Step 1", "Step 2", "Step3" ] }
+        this.onNewStepEvent = this.onNewStepEvent.bind(this);
+    }
+
+    onNewStepEvent( step ){
+        this.props.newStepEvent( step );
     }
 
     render() {
 
-        const stepList = this.state.steps.map ( (value, index) => <StepItem key={index} step={value} /> );
+        const stepList = Array.isArray( this.props.steps ) && this.props.steps.length > 0 ? 
+                    this.props.steps.map ( (value, index) => <StepItem key={index} step={value} /> ) :
+                    <p className="text-gray-500 text-sm">Add some preparation steps first.</p>
+
+        const newStepForm = this.props.inViewMode ? '' : <StepForm newStepEvent={this.onNewStepEvent} />
 
         return (
             <div> 
                 <h2 className="mb-2 font-normal text-gray-700 text-lg">Steps</h2>
+                { newStepForm }
                 <ul className="list-decimal">
                     { stepList }
                 </ul>
-                <div className="flex relative">
-                    <input type="text" className="border rounded-sm p-2 my-2 font-thin text-sm" />
-                    <button className="self-center absolute -right-9"><i class="fas fa-plus-circle fa-2x"></i></button>
-                </div>
             </div>
         );
     }

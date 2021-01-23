@@ -1,28 +1,33 @@
 import { Component, Fragment } from "react";
+import { IngredientForm } from "./ingredientform";
 import { IngredientItem } from "./ingredientitem";
 
 export class Ingredientslist extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { ingridients: [ { name: "ingridient 1", qty: 1 } , { name: "ingridient 2", qty: 3 }, { name: "ingridient 3", qty: 4 } ] }
+        this.OnNewIngridienEvent = this.OnNewIngridienEvent.bind(this);
+    }
+
+    OnNewIngridienEvent( ingridient ){
+        this.props.newIngridientEvent( ingridient );
     }
 
     render() {
 
-        const ingredientlist = this.state.ingridients.map ( (value, index) => <IngredientItem key={index} ingridient={value} /> );
+        const ingredientlist = Array.isArray( this.props.ingridients ) && this.props.ingridients.length > 0 ? 
+                    this.props.ingridients?.map ( (value, index) => <IngredientItem key={index} ingridient={value} /> ) :
+                    <p className="text-gray-500 text-sm">Add some ingridients first.</p>
 
+        const newIngridientForm = this.props.inViewMode ? '' : <IngredientForm newIngridientEvent={this.OnNewIngridienEvent} />
+                    
         return (
-            <div> 
+            <div className="mb-10"> 
                 <h2 className="mb-2 font-normal text-gray-700 text-lg">Ingredient List</h2>
+                { newIngridientForm }
                 <>
                     { ingredientlist }
                 </>
-                <div className="flex relative">
-                    <input type="text" className="border rounded-sm p-2 my-2 font-thin text-sm" />
-                    <input type="number" className="border rounded-sm p-2 m-2 w-14 font-thin text-sm" />
-                    <button className="self-center absolute -right-8"><i class="fas fa-plus-circle fa-2x"></i></button>
-                </div>
             </div>
         );
     }

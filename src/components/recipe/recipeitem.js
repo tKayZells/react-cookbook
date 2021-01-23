@@ -10,9 +10,9 @@ export class RecipeItem extends Component {
         return (
             <div className="p-2 flex justify-start"> 
                 <p className="mr-14 font-light text-gray-500">
-                { this.props.name } 
+                { this.props.recipe } 
                 </p>
-                <i class="fas fa-chevron-right mt-1"></i>
+                <i className="fas fa-chevron-right mt-1"></i>
             </div>
         );
     }

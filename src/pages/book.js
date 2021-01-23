@@ -7,21 +7,29 @@ export class Book extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            recipeList : ["recipe name 1", "recipe name 2", "recipe name 3", "recipe name 4"]
+            recipeList : []
         };
+
+        this.onButtonClickHandle = this.onButtonClickHandle.bind(this);
+    }
+
+    onButtonClickHandle(){
+        this.props.onNewRecipeButtonClick();
     }
 
     render(){
-        const listItem  = this.state.recipeList.map( (val, index) => <RecipeItem  key={index} name={ val } /> )
+        const listItem  =  Array.isArray( this.props.recipes ) && this.props.recipes.length > 0 ? 
+            this.props.recipes.map( (val, index) => <RecipeItem  key={index} recipe={ val } /> ) :
+            <p className="text-gray-500 ">Cookbook empty, Create some recipes!</p>;
 
         return (
             <div className="p-2 lg:col-start-2">
-                <h2 className="mb-2 font-bold text-lg">Recipe List</h2>
+                <h2 className="mb-2 font-bold text-xl">Recipe List</h2>
                 <div className="border sm:w-1/4 md:w-1/3"></div>
                 <div className="m-2 p-4">
                     { listItem }
                 </div>
-                <Button text="new recipe" />
+                <Button text="new recipe" handleClick={this.onButtonClickHandle} />
             </div>
         );
     }
