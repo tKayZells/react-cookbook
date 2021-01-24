@@ -23,7 +23,7 @@ export class Ingredientslist extends Component {
                     
         return (
             <div className="mb-10"> 
-                <h2 className="mb-2 font-normal text-gray-700 text-lg">Ingredient List</h2>
+                <h2 className="mb-2 font-semibold text-gray-600 text-md">Ingredient List</h2>
                 { newIngridientForm }
                 <>
                     { ingredientlist }

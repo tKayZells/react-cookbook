@@ -10,17 +10,19 @@ class App extends Component {
 
     this.state = {
       onNewRecipeForm : false,
-      recipes : []
+      recipes : [],
+      selectedRecipe: {}
     };
 
     this.onNewRecipeButtonHandler = this.onNewRecipeButtonHandler.bind(this);
     this.newRecipeEventHandler = this.newRecipeEventHandler.bind(this);
+    this.onViewRecipeHandle = this.onViewRecipeHandle.bind(this);
   }
 
   newRecipeEventHandler( recipe ){
     const recipeList = this.state.recipes;
     recipeList.push( recipe );
-    this.setState( { recipes : recipeList } );
+    this.setState( { recipes : recipeList, onNewRecipeForm : false } );
   }
 
   onNewRecipeButtonHandler(){
@@ -28,15 +30,18 @@ class App extends Component {
       this.setState( { onNewRecipeForm : true });
   }
 
+  onViewRecipeHandle( index ){
+    this.setState({ selectedRecipe : this.state.recipes[index], onNewRecipeForm : false });
+  }
+
   render() {
       const recipeNames = this.state.recipes.map( (value, index) => value.name );
-      console.log(recipeNames)
       return (
         <>
           <Header />
           <div className="App m-4 p-4 grid gap-4 lg:grid-cols-4 md:grid-cols-1">
-            <Book recipes={ recipeNames } onNewRecipeButtonClick={ this.onNewRecipeButtonHandler } />
-            <Recipe isCreatingRecipe={ this.state.onNewRecipeForm } newRecipeEvent={ this.newRecipeEventHandler }  />
+            <Book onViewRecipeEvent={ this.onViewRecipeHandle } recipes={ recipeNames } onNewRecipeButtonClick={ this.onNewRecipeButtonHandler } />
+            <Recipe isCreatingRecipe={ this.state.onNewRecipeForm } recipe={ this.state.selectedRecipe } newRecipeEvent={ this.newRecipeEventHandler }  />
           </div>
         </>
       );
