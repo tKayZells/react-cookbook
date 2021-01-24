@@ -7,7 +7,7 @@ export class Header extends Component {
     
     render(){
         return (
-            <div className="h-14 p-2 text-center uppercase font-semibold text-2xl bg-gray-700 text-white tracking-widest">
+            <div className="h-14 p-2 text-center uppercase font-semibold text-2xl bg-gray-700 text-white tracking-widest fixed top-0 w-full">
                 Cookbook
                 <i className="fas fa-book ml-4"></i>
             </div>

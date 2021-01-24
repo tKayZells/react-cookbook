@@ -59,7 +59,7 @@ export class Recipe extends Component {
         const description = inViewMode && this.props.recipe.desc ? this.props.recipe.desc : this.state.desc;
 
         return (
-            <div className="p-2 lg:col-span-2">
+            <div className="p-2 lg:col-span-2 w-3/4 min-w-3/4 md:w-full lg:w-full">
                 <div className="flex">
                     { titleInput }
                     <div className="w-1/12"></div>
@@ -70,7 +70,7 @@ export class Recipe extends Component {
                 <div className="border lg:w-1/3 sm:w-1/2 sm:justify-between"></div>
                 <div className="py-4 my-2 flex flex-col md:max-w-md">
                     <label className="text-md my-2 text-gray-600 font-semibold">Description</label>
-                    <textarea value={description} ref={ this.descTextarea } className={`border p-2 font-thin text-gray-500 max-h-24 text-sm ${ inViewMode ? 'bg-white' : '' } `} onChange={ this.onRecipeDescriptionChange } disabled={ inViewMode }>
+                    <textarea value={description} ref={ this.descTextarea } className={`border p-2 font-thin text-gray-500 max-h-24 text-sm ${ inViewMode && this.props.recipe.desc ? 'bg-white' : '' } `} onChange={ this.onRecipeDescriptionChange } disabled={ inViewMode }>
                     </textarea>
                 </div>
                 <Ingredientslist ingridients={ ingridients } inViewMode={ inViewMode } newIngridientEvent={ this.newIngridientEventHandler } />
