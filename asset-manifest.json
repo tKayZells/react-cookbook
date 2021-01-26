@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-cookbook/static/css/main.4666a91e.chunk.css",
+    "main.js": "/react-cookbook/static/js/main.dcbb68d0.chunk.js",
+    "main.js.map": "/react-cookbook/static/js/main.dcbb68d0.chunk.js.map",
+    "runtime-main.js": "/react-cookbook/static/js/runtime-main.2b95fa3e.js",
+    "runtime-main.js.map": "/react-cookbook/static/js/runtime-main.2b95fa3e.js.map",
+    "static/js/2.55b0de7d.chunk.js": "/react-cookbook/static/js/2.55b0de7d.chunk.js",
+    "static/js/2.55b0de7d.chunk.js.map": "/react-cookbook/static/js/2.55b0de7d.chunk.js.map",
+    "index.html": "/react-cookbook/index.html",
+    "static/css/main.4666a91e.chunk.css.map": "/react-cookbook/static/css/main.4666a91e.chunk.css.map",
+    "static/js/2.55b0de7d.chunk.js.LICENSE.txt": "/react-cookbook/static/js/2.55b0de7d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b95fa3e.js",
+    "static/js/2.55b0de7d.chunk.js",
+    "static/css/main.4666a91e.chunk.css",
+    "static/js/main.dcbb68d0.chunk.js"
+  ]
+}
