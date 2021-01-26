@@ -1,5 +1,6 @@
 {
   "name": "react-app",
+  "homepage": "https://tKayZells.github.io/react-cookbook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
